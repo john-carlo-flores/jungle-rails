@@ -48,7 +48,7 @@
       <ul class="navbar-nav d-flex align-items-center">
           <% if current_user %>
             <li class="nav-item nav-link d-flex align-items-center"> 
-              Signed in as <%= current_user.name %> | 
+              Signed in as <%= current_user.first_name %> | 
               <%= link_to 'Logout', '/logout', class: "nav-link" %>
             </li>
           <% else %>
