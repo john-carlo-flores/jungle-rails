@@ -12,6 +12,14 @@ RSpec.describe User, type: :model do
       )
     end
 
+    context 'User' do
+      it 'must be valid when first_name, last_name, email and passwords are populated' do
+        @user.save
+
+        expect(@user.errors.full_messages).to be_empty
+      end
+    end
+
     context 'Password' do
       it 'must not be valid when password field is blank' do
         @user.password = nil
@@ -33,6 +41,14 @@ RSpec.describe User, type: :model do
         
         expect(@user.errors.full_messages).not_to be_empty
       end
+
+      it 'must not be valid when password length is less than 6' do
+        @user.password = '12345'
+        @user.password_confirmation = '12345'
+        @user.save
+
+        expect(@user.errors.full_messages).not_to be_empty
+      end
     end
 
     context 'Email' do
@@ -52,6 +68,22 @@ RSpec.describe User, type: :model do
       
       it 'must not be valid when email is blank' do
         @user.email = nil
+        @user.save
+        
+        expect(@user.errors.full_messages).not_to be_empty
+      end
+    end
+
+    context 'Name' do
+      it 'must not be valid when first name field is blank' do
+        @user.first_name = nil
+        @user.save
+        
+        expect(@user.errors.full_messages).not_to be_empty
+      end
+
+      it 'must not be valid when last name field is blank' do
+        @user.last_name = nil
         @user.save
         
         expect(@user.errors.full_messages).not_to be_empty
