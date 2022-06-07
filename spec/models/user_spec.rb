@@ -129,5 +129,11 @@ RSpec.describe User, type: :model do
       
       expect(@user).to be_truthy
     end
+
+    it 'should fail if email is invalid and password is correct' do
+      @user = User.authenticate_with_credentials('test123@test.com', 'password')
+      
+      expect(@user).to be_nil
+    end
   end
 end
