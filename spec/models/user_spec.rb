@@ -94,4 +94,28 @@ RSpec.describe User, type: :model do
       @user.destroy unless @user.nil?
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    before do
+      @user = User.create(
+        first_name: 'Mowgli',
+        last_name: 'Man-cub',
+        email: 'test@test.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+    end
+
+    it 'should fail if stored password does not equal password provided at login' do
+      @user = User.authenticate_with_credentials('test@test.com', 'passwor')
+
+      expect(@user).to be_falsey
+    end
+
+    it 'should be valid if stored password matches password provided at login' do
+      @user = User.authenticate_with_credentials('test@test.com', 'password')
+
+      expect(@user).to be_truthy
+    end
+  end
 end

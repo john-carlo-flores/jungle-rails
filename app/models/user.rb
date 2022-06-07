@@ -4,4 +4,10 @@ class User < ApplicationRecord
   validates :email, :uniqueness => { case_sensitive: false }
 
   has_secure_password
+
+  def self.authenticate_with_credentials(email, password)
+    sanitized_email = email.downcase.strip
+
+    self.find_by(email: sanitized_email)&.authenticate(password)
+  end
 end
