@@ -117,5 +117,17 @@ RSpec.describe User, type: :model do
 
       expect(@user).to be_truthy
     end
+
+    it 'should be valid if email has extra spaces and password is correct' do
+      @user = User.authenticate_with_credentials(' test@test.com ', 'password')
+      
+      expect(@user).to be_truthy
+    end
+      
+    it 'should be valid if email has mismatch case and password is correct' do
+      @user = User.authenticate_with_credentials('TesT@tEst.com', 'password')
+      
+      expect(@user).to be_truthy
+    end
   end
 end
