@@ -34,6 +34,29 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).not_to be_empty
       end
     end
+
+    context 'Email' do
+      it 'must be unique and case insensitive' do
+        @user.save
+        
+        @same_email_user = User.create(
+        first_name: 'Baloo',
+        last_name: 'Sloth-bear',
+        email: 'TEST@TEST.com',
+        password: 'password',
+        password_confirmation: 'password'
+        )
+        
+        expect(@same_email_user.errors.full_messages).not_to be_empty
+      end
+      
+      it 'must not be valid when email is blank' do
+        @user.email = nil
+        @user.save
+        
+        expect(@user.errors.full_messages).not_to be_empty
+      end
+    end
     
     after(:each) do
       @user.destroy unless @user.nil?
