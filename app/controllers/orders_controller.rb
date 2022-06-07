@@ -7,9 +7,11 @@ class OrdersController < ApplicationController
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
+    current_user.email = ENV['GMAIL_USERNAME'].to_s
 
     if order.valid?
       empty_cart!
+      OrderMailer.with(user: current_user, order: order).receipt.deliver_now if current_user
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
