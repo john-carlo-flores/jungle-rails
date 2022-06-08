@@ -16,6 +16,9 @@ A mini e-commerce application built with Rails 6.1 for purposes of teaching Rail
 ### Add Items to Cart and Order
 ![Cart + Order](docs/cart_order.mp4)
 
+### Admin Privileges
+![Admin](docs/admin.mp4)
+
 ## Dependencies
 
 - [Ruby 3.1.1](https://www.ruby-lang.org/en/documentation/installation/)
