@@ -23,21 +23,56 @@
 </section>
 <section class="products-reviews border border-success rounded p-3">
   <header class="alert alert-success">
-    <h1><u>Reviews:</u></h1>
+    <h1 class="ms-3"><u>Reviews:</u></h1>
   </header>
 
-  <div class="ms-3">
-    <% @product.reviews.each do |review| %>
-      <div class="w-75 border-bottom mt-2">
-        <div class="d-flex justify-content-between">
-          <div>
-            <span><strong><%= "#{review.user.first_name} #{review.user.last_name}" %></strong></span>
-            <span><%= review.star_ratings %></span>
+  <div class="ms-3 me-3 row">
+    <% if @product.reviews.empty? %>
+      <h5>No Customer Reviews</h5> 
+    <% else %>
+      <div class="col-md-12">
+      <% @product.reviews.each do |review| %>
+        <div class="border-bottom mt-2">
+          <div class="d-flex justify-content-between">
+            <div>
+              <span><strong><%= "#{review.user.first_name} #{review.user.last_name}" %></strong></span>
+              <span><%= review.star_ratings %></span>
+            </div>
+            <span><%= review.created_at.strftime('%F') %>
           </div>
-          <span><%= review.created_at.strftime('%F') %>
+          <p><em><%= review.description %></em></p>
         </div>
-        <p><em><%= review.description %></em></p>
+      <% end %>
       </div>
     <% end %>
+    <div class="mt-3">
+      <%= form_for [@product, @review] do |form| %>
+
+        <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="form-group">
+            <%= form.label :description %>
+            <%= form.text_area :description, size: '90', class: 'form-control h-50' %>
+          </div>
+
+          <div class="form-group text-center mt-4">
+            <%= form.label :rating %>
+            <%= form.select :rating, options_for_select([1, 2, 3, 4, 5]), class: 'form-control' %>
+          </div>
+
+          <%= form.submit 'Submit Review', class: 'btn btn-primary mt-4' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </section>
