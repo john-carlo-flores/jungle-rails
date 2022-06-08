@@ -31,7 +31,7 @@
       <h5>No Customer Reviews</h5> 
     <% else %>
       <div class="col-md-12">
-      <% @product.reviews.each do |review| %>
+      <% @product.reviews.order(created_at: :desc).each do |review| %>
         <div class="border-bottom mt-2">
           <div class="d-flex justify-content-between">
             <div>
