@@ -35,7 +35,7 @@ puts "Re-creating Products ..."
 
 Product.destroy_all
 
-cat1.products.create!({
+prod1 = cat1.products.create!({
   name:  'Giant Tea',
   description: "The Giant Tea is an uncommon, medium-sized plant and can be found only in some tundras. It blooms twice a year, for 3 weeks.
   It has narrow, paired leaves, which are usually yellow-green. It also grows large flowers, which can be blue, bronze, light yellow, purple and light grey.
@@ -50,23 +50,23 @@ cat1.products.create!({
   price: 64.99
 })
 
-cat1.products.create!({
+prod2 = cat1.products.create!({
   name:  'Scented Blade',
   description: "
   The Scented Blade is an extremely rare, tall plant and can be found mostly in savannas. It blooms once a year, for 2 weeks.
-It has thin, palmate leaves, which are usually lime green. It also grows small flowers, which can be dark blue, light gold and dark red.
+  It has thin, palmate leaves, which are usually lime green. It also grows small flowers, which can be dark blue, light gold and dark red.
 
-These plants grow in large groups, but it's fairly easy to control and maintain their growth.
-They can be eaten to relief a sore throat.
+  These plants grow in large groups, but it's fairly easy to control and maintain their growth.
+  They can be eaten to relief a sore throat.
 
-As a defense mechanism the Scented Blade can collapse its flowers when it detects vibrations.
-They rely on animal pollination to reproduce. Once pollinated, they grow fairly large, delicious nuts.",
+  As a defense mechanism the Scented Blade can collapse its flowers when it detects vibrations.
+  They rely on animal pollination to reproduce. Once pollinated, they grow fairly large, delicious nuts.",
   image: open_asset('plante_2.jpg'),
   quantity: 18,
   price: 24.99
 })
 
-cat1.products.create!({
+prod3 = cat1.products.create!({
   name:  'Lion Grapevine',
   description: "The Lion Grapevine is an uncommon, modest plant and can be found only in some humid regions. It blooms once a year, for 4 months.
   It has wide, squared leaves, which are usually purple. It also grows tiny flowers, which can be dark bronze and orange.
@@ -202,7 +202,7 @@ cat3.products.create!({
   price: 87.65
 })
 
-cat3.products.create!({
+prod4 = cat3.products.create!({
   name:  'Cliff Collard',
   description: "The Cliff Collard is a very rare, tiny plant and can be found in damp places. It blooms twice a year, for 1 week.
   It has wide, spear shaped leaves, which are usually lime green. It also grows quite large flowers, which can be silver, light brown and light red.
@@ -217,6 +217,114 @@ cat3.products.create!({
   price: 79.99
 })
 
+## USERS
+
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+user1 = User.create!({
+  first_name: "Cordi",
+  last_name: "Gonet",
+  email: "cgonet0@seattletimes.com",
+  password: "password",
+  password_confirmation: "password",
+})
+
+user2 = User.create!({
+  first_name: "Sibylle",
+  last_name: "Keningham",
+  email: "skeningham1@slashdot.org",
+  password: "password",
+  password_confirmation: "password",
+})
+
+user3 = User.create!({
+  first_name: "Mellie",
+  last_name: "Roycraft",
+  email: "mroycraft2@gov.uk",
+  password: "password",
+  password_confirmation: "password",
+})
+
+user4 = User.create!({
+  first_name: "Jewell",
+  last_name: "Kelsey",
+  email: "jkelsey3@nyu.edu",
+  password: "password",
+  password_confirmation: "password",
+})
+
+user5 = User.create!({
+  first_name: "Octavia",
+  last_name: "Boyse",
+  email: "oboyse4@sphinn.com",
+  password: "password",
+  password_confirmation: "password",
+})
+
+user6 = User.create!({
+  first_name: "Gohan",
+  last_name: "Shiba",
+  email: "email@email.com",
+  password: "password",
+  password_confirmation: "password",
+})
+
+## REVIEWS
+
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+Review.create!({
+  product: prod1,
+  user: user2,
+  rating: 3,
+  description: "This plant is bussin'!"
+})
+
+Review.create!({
+  product: prod1,
+  user: user2,
+  rating: 3,
+  description: "This plant is aight.."
+})
+
+Review.create!({
+  product: prod1,
+  user: user3,
+  rating: 4,
+  description: "This plant is awesome. It takes the cake for sure!"
+})
+
+Review.create!({
+  product: prod2,
+  user: user4,
+  rating: 1,
+  description: "I am allergic to this plant!"
+})
+
+Review.create!({
+  product: prod2,
+  user: user5,
+  rating: 2,
+  description: "This plant blocks all the sunlight :("
+})
+
+Review.create!({
+  product: prod3,
+  user: user6,
+  rating: 5,
+  description: "Woof!"
+})
+
+Review.create!({
+  product: prod4,
+  user: user1,
+  rating: 5,
+  description: "Oh man...word cannot express what happened to me after eating these. If you are someone that can tolerate the sugar substitute, enjoy. If you are like the dozens of people that tried my order, Run!\n\nFirst of all, for taste I would rate these as a 5. So good. Soft, true-to-taste fruit flavors like the sugar variety...I was a happy camper\n\nBUT (or should I say BUTT), not long after eating about 20 of these all hell broke loose. I had a gastrointenstinal experience like nothing I've ever imagined. Cramps, sweating, bloating beyond my worst nightmare. I've had food poisoning from bad shellfish and that was almost like a skip in the park compared to what was going on iside me.\n\nThen came the, uh, flatulence. HEavents to Murgatroyd, the sounds, like trumpets calling the demons back to Hell...the strethc, like 1,000 rotten corpses vomited. I couldn't stand to stay in one room for fear of succumbing to my own odors.\n\nIf you order these, best of luck to you. And please, don't post a video review during the aftershocks."
+})
 
 puts "DONE!"
 
