@@ -5,19 +5,19 @@ A mini e-commerce application built with Rails 6.1 for purposes of teaching Rail
 ## Overview
 
 ### Home Page/Categories
-![Home Page + Categories](docs/overview.mp4)
+https://user-images.githubusercontent.com/68353387/172731463-0d2edf40-575f-4de3-9294-888b1dd8c18a.mp4
 
 ### Product Details
-![Product Details](docs/product_details.mp4)
+https://user-images.githubusercontent.com/68353387/172731511-ffb753f4-f03f-4753-9c53-3c97f5ea04ad.mp4
 
 ### Registration/Login
-![Registration + Login](docs/registration_login.mp4)
+https://user-images.githubusercontent.com/68353387/172731531-21be11cd-9d22-4674-b7b5-7971d9b84c7a.mp4
 
 ### Add Items to Cart and Order
-![Cart + Order](docs/cart_order.mp4)
+https://user-images.githubusercontent.com/68353387/172731549-ca161655-5121-4fb6-af7b-45343b4b4ea0.mp4
 
 ### Admin Privileges
-![Admin](docs/admin.mp4)
+https://user-images.githubusercontent.com/68353387/172731571-5c3a831a-8450-4db0-bfa9-3411d6fa34c7.mp4
 
 ## Dependencies
 
